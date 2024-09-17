@@ -8,4 +8,5 @@ Bore Tool is a Java-based web application that provides TCP tunnel that exposes 
 - Configure local and remote ports
 - User-friendly web interface
 
-  Project under development
+
+## Project under development
