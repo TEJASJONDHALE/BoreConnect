@@ -12,8 +12,8 @@ A web interface for the Bore CLI tool built with Spring Boot.
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
-cd bore-web-ui
+git clone https://github.com/TEJASJONDHALE/BoreConnect
+cd BoreConnect
 ```
 
 2. Build the project
@@ -26,7 +26,7 @@ cd bore-web-ui
 ./gradlew bootRun
 ```
 
-The application will be available at `http://localhost:8080`
+Open `http://localhost:8080` to access the interface
 
 ## Features
 
@@ -41,7 +41,7 @@ The application will be available at `http://localhost:8080`
 1. Open the web interface in your browser
 2. Enter the port number you want to expose
 3. Click "Start Bore" to begin tunneling
-4. The output will show the public URL assigned by bore.pub
+4. The output will show the public URL
 5. Use "Stop Bore" to end the tunnel
 
 ## Configuration
