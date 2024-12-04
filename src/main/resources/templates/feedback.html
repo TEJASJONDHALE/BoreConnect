@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        /*body {
+            font-family: Arial, sans-serif;
+            background-color: #111B20;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }*/
+        body {
+            font-family: 'Jersey 25', sans-serif; /* Fix syntax and add fallback font */
+            background: radial-gradient(circle at 10% 20%, #024E60, #002E3C 80%),
+            radial-gradient(circle at 80% 80%, #557884, transparent 70%);
+            background-blend-mode: multiply;
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Flex layout */
+            flex-direction: column; /* Layout for children */
+        }
+        .container {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            background-color: #2f3e50;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        input {
+            background-color: #131C28;
+            color: white;
+        }
+        textarea {
+            height: 80px;
+            background-color: #131C28;
+            color: white;
+        }
+        button {
+            background-color: #024E60;
+            color: white;
+            cursor: pointer;
+            border: 1px solid #018C8C;
+        }
+        button:hover {
+            background-color: #019292;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <img src="WhatsApp_Image_2024-11-18_at_21.19.07_aacd06ee-removebg-preview.png" alt="Logo" width="100">
+            <p class="tagline">TCP tunnel that exposes local port to a remote server</p>
+        <h1>Share your experience with</h1>
+        <div class="logo">BORE CONNECT</div>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Name :" required>
+            <input type="email" name="email" placeholder="Email :" required>
+            <textarea name="feedback" placeholder="Feedback..." required></textarea>
+            <button type="submit">SUBMIT</button>
+        </form>
+    </div>
+</body>
+</html>
