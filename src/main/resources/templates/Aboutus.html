@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoreConnect</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Noto+Serif+Ahom&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Jersey 25', sans-serif;
+            background-color: #0A0A0A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 800px;
+            height: 600px;
+            background: url('src\main\resources\templates\Group 2.jpg') no-repeat center center / cover;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            padding: 100px;
+        }
+
+        .content-box {
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0;
+            width: 75%;
+        }
+
+        .about-us {
+            position: absolute;
+            top: 50%;
+            left: -80px;
+            transform: translate(0, -50%);
+            background: #778899;
+            color: #ffffff;
+            padding: 10px 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .home {
+            position: absolute;
+            top: -100px;
+            right: 20px;
+            background: #778899;
+            color: #ffffff;
+            padding: 10px 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-left: 70px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content-box">
+        <div class="about-us">ABOUT US</div>
+        <div class="home">HOME</div>
+        <div class="text">
+            The purpose of BoreConnect is to provide a user-friendly web application tool that allows users to establish
+            TCP/HTTP proxies easily and efficiently. By utilizing Java and Netty, the application aims to facilitate
+            seamless connections between clients and servers, enhancing accessibility and flexibility for developers and
+            users alike.
+            BoreConnect is designed to address these needs by providing a powerful, yet user-friendly solution for
+            setting up and managing TCP and HTTP proxies. It also offers a solution for creating secure tunnels to
+            localhost, making it easier for developers to expose their local development servers to the internet,
+            allowing them to bypass network restrictions, share files, and establish communication channels.
+        </div>
+    </div>
+</div>
+</body>
+</html>

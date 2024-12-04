@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap';" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bore Connect</title>
+    <style>
+        body {
+            font-family: 'Jersey 25', sans-serif; /* Fix syntax and add fallback font */
+            background: radial-gradient(circle at 10% 20%, #024E60, #002E3C 80%),
+            radial-gradient(circle at 80% 80%, #557884, transparent 70%);
+            background-blend-mode: multiply;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Flex layout */
+            flex-direction: column; /* Layout for children */
+        }
+       .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #2f3e50;
+            padding: 10px 0;
+            border-bottom: 2px solid #2f3e50;
+        }
+        .navbar {
+                background-color: rgba(47, 62, 80, 0.8); /* Add transparency */
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        /*.container {
+            text-align: center;
+            width: 100%; 
+            height: 100vh; 
+            margin: 0 auto; 
+            padding: 20px; 
+            border-radius: 0; 
+            background-color: #2f3e50; 
+            box-sizing: border-box; 
+        }*/
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start; 
+            gap: 10px;
+            margin: 15px 0;
+        }
+        label {
+            font-size: 16px;
+            margin: 0;
+            width: auto; 
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 5px auto;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            color: white;
+
+        }
+        input {
+            background-color: #557884;
+            
+        }
+        input::placeholder {
+            color: white;
+            opacity: 1;
+        }
+        button {
+            background-color: #256278;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+            border: 1px solid #256278;
+            width: auto;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background-color: #0E252D;
+        }
+        .status-section {
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start; 
+            margin: 15px auto;
+            gap: 10px; 
+            width: 100%;
+        }
+        .status-box, .url-box{
+            flex-grow: 1; 
+            background-color: #024E60;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .copy-button {
+            width: auto;
+            padding: 1px 10px;
+        }
+        .url-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            margin: 15px auto;
+            width: 100%;
+        }
+        .url-box {
+            flex-grow: 1;
+            background-color: #024E60;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            width: auto;
+            padding: 5px 15px;
+            background-color: #256278;
+            color: white;
+            border: 1px solid #256278;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #0E252D;
+        }
+
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">HOME</a>
+        <a href="#">About us</a>
+        <a href="#">Feedback</a>
+    </div>
+    <div class="container">
+        <div class="main">
+            <img src="WhatsApp_Image_2024-11-18_at_21.19.07_aacd06ee-removebg-preview.png" alt="Logo" width="100">
+            <p class="tagline">TCP tunnel that exposes local port to a remote server</p>
+        <form>
+            <div class="form-group">
+                <label for="port">PORT</label>
+                <input type="text" id="port" name="port" placeholder="Enter port number">
+            </div>
+            <div class="form-group">
+                <button type="button">Start bore</button>
+                <button type="button">Stop bore</button>
+            </div>
+            <div class="status-section">
+                <label>Status</label> 
+                <div class="status-box"></div>
+            </div>
+            <div class="url-section">
+                <label>PUBLIC URL</label>
+                <div class="url-box"></div>
+                <button type="button" class="copy-button">Copy</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
