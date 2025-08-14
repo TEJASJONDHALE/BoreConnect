@@ -16,6 +16,11 @@ public class BoreController {
     public String home() {
         return "index";
     }
+    @GetMapping("/feedback")
+    public String feedbackPage() {
+        return "feedback"; // Renders feedback.html
+    }
+
 
     @PostMapping("/start")
     @ResponseBody

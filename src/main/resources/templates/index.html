@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bore Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jersey 25', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #024E60, #002E3C 80%),
+                        radial-gradient(circle at 80% 80%, #557884, transparent 70%);
+            background-blend-mode: multiply;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(47, 62, 80, 0.8);
+            padding: 10px 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        label {
+            font-size: 16px;
+            width: auto;
+        }
+        input, button {
+            padding: 10px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            color: white;
+        }
+        input {
+            background-color: #557884;
+            width: 90%;
+        }
+        input::placeholder {
+            color: white;
+        }
+        button {
+            background-color: #256278;
+            border: 1px solid #256278;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background-color: #0E252D;
+        }
+        .status {
+            margin: 15px auto;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .status.running {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .status.stopped {
+            background-color: #f44336;
+            color: white;
+        }
+        .url-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px auto;
+            width: 100%;
+        }
+        .url-box {
+            flex-grow: 1;
+            background-color: #024E60;
+            padding: 12px;
+            border-radius: 10px;
+            color: white;
+            word-wrap: break-word;
+            text-align: left;
+        }
+        .copy-button {
+            background-color: #256278;
+            border: 1px solid #256278;
+            border-radius: 10px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #0E252D;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <a href="#">HOME</a>
+    <a href="#">About us</a>
+    <a href="/api/feedback">Feedback</a> <!-- Updated feedback link -->
+</div>
+<div class="container">
+    <div class="main">
+        <p class="logo">BoreConnect</p>
+        <p class="tagline">TCP tunnel that exposes local port to a remote server</p>
+        <div class="form-group">
+            <label for="port">PORT</label>
+            <input type="number" id="port" placeholder="Enter port number" value="8080">
+        </div>
+        <div class="form-group">
+            <button class="start-btn" onclick="startBore()">Start Bore</button>
+            <button class="stop-btn" onclick="stopBore()">Stop Bore</button>
+        </div>
+        <div id="status" class="status stopped">Stopped</div>
+        <div class="url-section">
+            <label>PUBLIC URL</label>
+            <div id="url-box" class="url-box"></div>
+            <button class="copy-button" onclick="copyUrl()">Copy</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function startBore() {
+        const port = document.getElementById('port').value;
+        const urlBox = document.getElementById('url-box');
+        const status = document.getElementById('status');
+
+        try {
+            const response = await fetch('/api/start', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `port=${port}`
+            });
+            const url = await response.text();
+
+            if (url.startsWith('http')) {
+                urlBox.textContent = url;
+                status.textContent = 'Running';
+                status.className = 'status running';
+            } else {
+                urlBox.textContent = 'Error starting bore service';
+                status.textContent = 'Error';
+                status.className = 'status stopped';
+            }
+        } catch (error) {
+            urlBox.textContent = `Error: ${error.message}`;
+            status.textContent = 'Error';
+            status.className = 'status stopped';
+        }
+    }
+
+    async function stopBore() {
+        const urlBox = document.getElementById('url-box');
+        const status = document.getElementById('status');
+
+        try {
+            await fetch('/api/stop', { method: 'POST' });
+            urlBox.textContent = '';
+            status.textContent = 'Stopped';
+            status.className = 'status stopped';
+        } catch (error) {
+            console.error('Error stopping bore:', error);
+        }
+    }
+
+    async function copyUrl() {
+        const url = document.getElementById('url-box').textContent;
+        try {
+            await navigator.clipboard.writeText(url);
+            const copyButton = document.querySelector('.copy-button');
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => {
+                copyButton.textContent = 'Copy';
+            }, 2000);
+        } catch (error) {
+            console.error('Error copying URL:', error);
+        }
+    }
+</script>
+</body>
+</html>
